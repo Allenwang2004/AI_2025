@@ -1,0 +1,127 @@
+# ==============================================================================
+#  2025 Intro to AI — repository hygiene
+#
+#  Policy: source code, notebooks, specs, reports and the figures used by
+#  README.md are versioned.  Datasets, trained weights, build output and
+#  submission archives are NOT — they are large, re-derivable, or downloadable
+#  from the sources listed in README.md.
+# ==============================================================================
+
+# ------------------------------------------------------------------ OS / editor
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+
+# ---------------------------------------------------------------------- Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+.venv/
+env/
+ENV/
+
+# ============================================================ LARGE DATA (1/4)
+# Image / geospatial datasets — download instructions live in README.md
+# ------------------------------------------------------------------------------
+
+# HW3 — animal classification dataset (~605 MB, 8.5k JPEGs)
+hw3/data/
+
+# Final project — raw source datasets (IDTReeS / NeonTree / PureForest / Larch)
+final_project/source_datasets_adaption/**/images/
+final_project/source_datasets_adaption/**/annotations/
+final_project/source_datasets_adaption/**/Field/
+final_project/source_datasets_adaption/**/ITC/
+final_project/source_datasets_adaption/**/RemoteSensing/
+final_project/source_datasets_adaption/PureForest/
+final_project/source_datasets_finetuning/images/
+final_project/source_datasets_finetuning/labels/
+
+# Final project — materialised YOLO datasets (dataset.yaml + train/val.txt stay)
+final_project/yolo_dataset_adaption/images/
+final_project/yolo_dataset_adaption/labels/
+final_project/yolo_dataset_finetune/images/
+final_project/yolo_dataset_finetune/labels/
+
+# Generic raster / geospatial payloads
+*.tif
+*.tiff
+*.geotiff
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.parquet
+
+# ==================================================== MODEL CHECKPOINTS (2/4)
+# hw3/*.pth ≈ 196 MB each, final_project/green-coverage/api/model.pt ≈ 327 MB
+# ------------------------------------------------------------------------------
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.tflite
+*.pkl.gz
+*.joblib
+
+# Training run artefacts
+runs/
+lightning_logs/
+wandb/
+outputs/
+results/
+checkpoints/
+*.log
+
+# =================================================== SUBMISSION ARCHIVES (3/4)
+# 111705068_hw*.zip — bundled copies of files that are already tracked here
+# ------------------------------------------------------------------------------
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+
+# ============================================ WEB APP / NODE ARTEFACTS (4/4)
+# final_project/green-coverage — Next.js demo front-end (~785 MB unpruned)
+# ------------------------------------------------------------------------------
+node_modules/
+.next/
+out/
+.vercel/
+.turbo/
+*.tsbuildinfo
+next-env.d.ts
+.env
+.env.*
+!.env.example
+
+# Runtime upload / inference galleries produced by the demo server
+final_project/green-coverage/public/uploads/
+final_project/green-coverage/public/outputs/
+
+# ------------------------------------------------------------------------------
+# Explicitly keep the README figure set (some are .png that broader rules
+# above would otherwise be tempted to catch, and the folder must never be
+# swept up by an `outputs/`-style rule).
+# ------------------------------------------------------------------------------
+!assets/
+!assets/**
